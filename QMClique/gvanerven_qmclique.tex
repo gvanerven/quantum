@@ -135,7 +135,21 @@ The AND port can be implemented with a Toffoli gate as present in Equation~\ref{
 
 These gates can replace the boolean operations in the maximal clique algorithm. A Hadamard gate can be used in the input vector $A$ to create a superposition with all possible values.
 
-The Figure~\ref{fig:qcircuit} presents an implementation for a two vertices graph without edges.
+The Figure~\ref{fig:qcircuit} presents an implementation for a two vertices graph without edges. The qubits are:
+
+\begin{itemize}
+	\item Q1 and Q2: $A$;
+	\item Q3 and Q4: $W_1$;
+	\item Q5 and Q6: $W_2$;
+	\item Q7: $1 \oplus a_1 w_{11}$;
+	\item Q8: $1 \oplus a_2 w_{21}$;
+	\item Q9: $1 \oplus a_1 w_{21}$;
+	\item Q10: $1 \oplus a_2 w_{22}$;
+	\item Q11: $o_{1}$;
+	\item Q12: $o_{2}$;
+	\item Q13: $R$;
+	\item Q14: Qubit set to $|1\rangle$. It is used to change the $R$ state to $|1\rangle$ and verify if it force the collapse of $A$ to a maximal clique state; 
+\end{itemize}
 
 \begin{figure}[!ht]
 	\label{fig:qcircuit}

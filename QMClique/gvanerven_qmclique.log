@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.5.29)  25 AUG 2016 02:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.5.29)  25 AUG 2016 07:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -254,18 +254,21 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <7> not available
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 141.
+
 <images/qclique.png, id=23, 706.64pt x 513.92pt>
 File: images/qclique.png Graphic file (type png)
  <use images/qclique.png>
-Package pdftex.def Info: images/qclique.png used on input line 143.
+Package pdftex.def Info: images/qclique.png used on input line 157.
 (pdftex.def)             Requested size: 390.0pt x 283.63708pt.
 
-[4 <./images/qclique.png>] [5] (./gvanerven_qmclique.aux) ) 
+[4] [5 <./images/qclique.png>] (./gvanerven_qmclique.aux) ) 
 Here is how much of TeX's memory you used:
- 3161 strings out of 493029
- 44300 string characters out of 6136234
+ 3163 strings out of 493029
+ 44328 string characters out of 6136234
  117669 words of memory out of 5000000
- 6655 multiletter control sequences out of 15000+600000
+ 6657 multiletter control sequences out of 15000+600000
  10461 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,11n,23p,588b,324s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -280,7 +283,7 @@ msfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on gvanerven_qmclique.pdf (5 pages, 138628 bytes).
+Output written on gvanerven_qmclique.pdf (5 pages, 139493 bytes).
 PDF statistics:
  66 PDF objects out of 1000 (max. 8388607)
  45 compressed objects within 1 object stream
