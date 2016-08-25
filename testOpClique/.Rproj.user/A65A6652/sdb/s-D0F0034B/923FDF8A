@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#Making matrices\n#V = matrix(c(1,0,1,0,1,1,1,1,1), nrow = 3, ncol = 3)\n#T2 = matrix(c(0,0,0,0,1,0,0,0,1), nrow = 3, ncol = 3)\n#Each line in matrix() is a column in the defined matrix\nckM = matrix(c(0,1,1,1,1,\n               0,0,0,0,0,\n               0,0,0,0,0,\n               0,0,0,0,0,\n               0,0,0,0,0), nrow = 5, ncol = 5)\n\nv5.e0.k0 = matrix(c(1,0,0,0,0,\n                    0,1,0,0,0,\n                    0,0,1,0,0,\n                    0,0,0,1,0,\n                    0,0,0,0,1), nrow = 5, ncol = 5)\n\nv5.e8.k0 = matrix(c(1,0,0,0,1,\n                    0,1,1,1,1,\n                    0,1,1,1,1,\n                    0,1,1,1,1,\n                    1,1,1,1,1), nrow = 5, ncol = 5)\n\n#!ck | v5.e8.k0\n#xor(!ck, !ck | v5.e8.k0)\n\nv5.e8.k0.v0 = c(1,0,0,0,1)\nv5.e8.k0.v1 = c(0,1,1,1,1)\nv5.e8.k0.v2 = c(0,1,1,1,1)\nv5.e8.k0.v3 = c(0,1,1,1,1)\nv5.e8.k0.v4 = c(1,1,1,1,1)\n\n#Normal operation: using all vertices\nv5.e8.k0.v0 & v5.e8.k0.v1 & v5.e8.k0.v2 & v5.e8.k0.v3 & v5.e8.k0.v4\n#FALSE FALSE FALSE FALSE  TRUE\n#Only vertices in clique\nv5.e8.k0.v1 & v5.e8.k0.v2 & v5.e8.k0.v3 & v5.e8.k0.v4\n#FALSE  TRUE  TRUE  TRUE  TRUE\n\n#Using a operation before the AND\n(0 + (1 * v5.e8.k0.v0)) & v5.e8.k0.v1 & v5.e8.k0.v2 & v5.e8.k0.v3 & v5.e8.k0.v4\n#FALSE FALSE FALSE FALSE  TRUE\n#Output equivalent to using all vertices\n(1 + (0 * v5.e8.k0.v0)) & v5.e8.k0.v1 & v5.e8.k0.v2 & v5.e8.k0.v3 & v5.e8.k0.v4\n#FALSE  TRUE  TRUE  TRUE  TRUE\n#Output equivalent to remove the first vertice\n#Defining alphas\na0 = 0\na1 = 1\na2 = 1\na3 = 1\na4 = 1\nck = c(a0,a1,a2,a3,a4)\n\n########\n#u = ((as.integer(!a0) + (a0 * v5.e8.k0.v0)) & \n#      (as.integer(!a1) + (a1 * v5.e8.k0.v1)) & \n#      (as.integer(!a2) + (a2 * v5.e8.k0.v2)) & \n#      (as.integer(!a3) + (a3 * v5.e8.k0.v3)) & \n#      (as.integer(!a4) + (a4 * v5.e8.k0.v4)))\n\n#u = ((!a0 | (a0 & v5.e8.k0.v0)) & \n#      (!a1 | (a1 & v5.e8.k0.v1)) & \n#      (!a2 | (a2 & v5.e8.k0.v2)) & \n#      (!a3 | (a3 & v5.e8.k0.v3)) & \n#      (!a4 | (a4 & v5.e8.k0.v4)))\n# !a | (a & x) = (!a | a) & (!a | x) = !a | x\n\n#u = ((!a0 | v5.e8.k0.v0) & \n#      (!a1 | v5.e8.k0.v1) & \n#      (!a2 | v5.e8.k0.v2) & \n#      (!a3 | v5.e8.k0.v3) & \n#      (!a4 | v5.e8.k0.v4))\n\n#(C XOR A^B) XOR A = ¬A v B with C only equals to 1\nu = (xor(xor(1, a0 & v5.e8.k0.v0), a0) &\n     xor(xor(1, a1 & v5.e8.k0.v1), a1) &\n     xor(xor(1, a2 & v5.e8.k0.v2), a2) &\n     xor(xor(1, a3 & v5.e8.k0.v3), a3) &\n     xor(xor(1, a4 & v5.e8.k0.v4), a4))\n\n#Operation harder to using in cascade and generate a final result\n#ck & u\n#Using ¬P XOR Q to check if the selected vertices in input (ck) is the same of output\n#targetOutput = xor(!ck, u)\n#Problem with input (0,0,1,1,1). As a1 is part of a bigger clique, seting it to 1 makes\n#with the other vertices include it and output the same as an output with a1. The result\n#makes with that algorithm only output true when the combination is a maximum clique.\n\ntarget = xor(u[1], !a0) &\n  xor(u[2], !a1) &\n  xor(u[3], !a2) &\n  xor(u[4], !a3) &\n  xor(u[5], !a4)\n\n#target = TRUE\n#for(t in targetOutput){\n#  target = target & t\n#}\ntarget\n#######\n\na0 = 0\na1 = 0\na2 = 0\na3 = 0\na4 = 1\nck = c(a0,a1,a2,a3,a4)\n\nv5.e8.k0.v0 = c(1,0,0,0,0)\nv5.e8.k0.v1 = c(0,1,0,0,0)\nv5.e8.k0.v2 = c(0,0,1,0,0)\nv5.e8.k0.v3 = c(0,0,0,1,0)\nv5.e8.k0.v4 = c(0,0,0,0,1)\n\na0 = 1\na1 = 0\na2 = 0\na3 = 0\na4 = 0\nck = c(a0,a1,a2,a3,a4)\n\nv5.e8.k0.v0 = c(1,0,0,1,0)\nv5.e8.k0.v1 = c(0,1,0,0,0)\nv5.e8.k0.v2 = c(0,0,1,0,0)\nv5.e8.k0.v3 = c(1,0,0,1,0)\nv5.e8.k0.v4 = c(0,0,0,0,1)\n\na0 = 1\na1 = 0\na2 = 0\na3 = 1\na4 = 0\nck = c(a0,a1,a2,a3,a4)",
+    "created" : 1470956034795.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2417988625",
+    "id" : "923FDF8A",
+    "lastKnownWriteTime" : 1471390454,
+    "last_content_update" : 1471390454097,
+    "path" : "~/Dropbox/doutorado/quantum_comp/testOpClique/test.R",
+    "project_path" : "test.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
