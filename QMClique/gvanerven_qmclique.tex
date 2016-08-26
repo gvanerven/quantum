@@ -119,6 +119,7 @@ Therefore, if $R$ is true, the vector input $A$ is a maximal Clique. Note that, 
 
 If the algorithm is implement in a program, the time complexity will be $O(n^2)$, since we need $n$ operation by each $n$ vertex to generate the $O$ vector, and more $n$ operations to calculate $R$.
 
+The code was verified in a R script and can be found online\footnote{https://github.com/gvanerven/quantum/tree/master/testOpClique}.
 \section{Using Quantum ports}
 
 The algorithm can be implemented in a quantum computer using the Toffoli gate. The Equation~\ref{ex:removea1} can be modified to make the implementation easier, as shown in Equation~\ref{ex:remtof}.
@@ -135,7 +136,7 @@ The AND port can be implemented with a Toffoli gate as present in Equation~\ref{
 
 These gates can replace the boolean operations in the maximal clique algorithm. A Hadamard gate can be used in the input vector $A$ to create a superposition with all possible values.
 
-The Figure~\ref{fig:qcircuit} presents an implementation for a two vertices graph without edges. The qubits are:
+The Figure 1 presents an implementation for a two vertices graph without edges. The qubits are:
 
 \begin{itemize}
 	\item Q1 and Q2: $A$;
@@ -155,7 +156,7 @@ The Figure~\ref{fig:qcircuit} presents an implementation for a two vertices grap
 	\label{fig:qcircuit}
 	\centering
 	\includegraphics[width=1\textwidth]{qclique}
-	\caption{Quantum circuit for two vertices graph.}
+	\caption{Quantum circuit for a graph with two vertices.}
 \end{figure}
 
 The $W$ matrix for this example is $\bigl(\begin{smallmatrix}
@@ -163,6 +164,18 @@ The $W$ matrix for this example is $\bigl(\begin{smallmatrix}
 
 Note that will be necessary $n$ qubits for $A$, $n^2$ qubits for $W$, $n^2$ qubits to keep the $(1 \oplus A_i W_i)$ operations, $n$ qubits for the $O$ vectors and one to the result $R$.
 
+A simulation created in libquantum had as output states collapsed only in true clique values when the output was measured. The circuit used is shown in Figure 2.
+
+\begin{figure}[!ht]
+	\label{fig:qcircuitnctr}
+	\centering
+	\includegraphics[width=1\textwidth]{qcliquencontr}
+	\caption{Quantum circuit for a graph with two vertices and a measure without a qubit to force output.}
+\end{figure}
+
+The simulation was made if two qubits as well and the source code can be found online\footnote{https://github.com/gvanerven/quantum/tree/master/libquantum\_qmclique}
+
+\pagebreak
 \section{Conclusions and Question}
 
 The algorithm to verify a maximal clique can be implemented in a quantum computer using Toffoli gates. The Hadamard gate can be used to create a superposition in the input vector $A$. However, we are only interested in values that makes $R$ true, which implies that in a maximal clique. \textbf{The question is: is there an entangle state that we can use to force the result $R$ be true and makes $A$ to collapse to a maximal clique? Could the swap gate X do this? And if it exists, is there a way to take only the maximum cliques superpositions?}
