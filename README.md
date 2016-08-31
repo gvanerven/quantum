@@ -1,2 +1,2 @@
 # quantum
-This repository keep the quantum computing material.
+This repository keeps the quantum computing material.
